@@ -1,26 +1,25 @@
-//Declaracion de variables
+//Declaracion de variables globales
 float lecturaV; // almacena la lectura del voltaje
 float volt; //variable para manipular la lectura con una resolucion
-float voltaje;
-float lecturaA;
-float amp;
-float corriente;
+float voltaje; //esta variable construye el valor de voltaje necesario mediante el valor anterior medido más la lectura actual del voltaje
+float lecturaA; //lee la entrada de corriente
+float amp;//es la variable que multiplica la corriente almacenada por la resolucion
+float corriente;//esta variable construye el valor de la corriente necesaria mediante el valor anterior medido más la lectura actual de la corriente
 float resol = 0.0049;  // 5.1/1023 resolucion a usar en las mediciones
 int Relay = 3; //asignacion de pin al relay
 int V = A1;//asignacion de pin al voltaje
 int A = A0;//asignacion de pin a la corriente
-int i; //contador
+int i; //contador para tomar las medidas cada minuto
 
 /* Este es un codigo que realiza la lectura de voltaje y corriente usando un par de sensores conectados a los pines analogicos a1 y a0*/
 void setup() {
-  //analogReference(EXTERNAL);
   Serial.begin(9600); //inicia la comunicacion a una vel de 9600 baudios
   pinMode(V,INPUT); //configuracion de pines 
   pinMode(A,INPUT);
   pinMode(Relay, OUTPUT);
   digitalWrite(Relay, LOW); //set up de pin para modo descarga
 }
-void loop() {
+void loop() {//codigo a ejecutar cada vez que se toman mediciones
   voltaje = 0; //acumulacion de medida
   corriente = 0;
   for (i = 0; i < 1000; i++){
