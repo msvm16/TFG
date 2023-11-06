@@ -47,7 +47,7 @@ void loop() {
   {
     digitalWrite(Relay, LOW);
   }
-  if (voltaje < 2.2000) //si marca 2.2V se configura el pin a modo carga
+  if (voltaje < 2.2000) //si marca 2.2V se configura el pin apagado para proteger la celda
   {
     digitalWrite(Relay, HIGH);
   }
