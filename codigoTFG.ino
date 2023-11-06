@@ -43,11 +43,11 @@ void loop() {
   Serial.print(",");
   Serial.println(corriente,4);
   delay(60000);
-  if (voltaje > 3.9000) //si marca mas de 3.9V se configura a modo descarga
+  if (voltaje > 3.9000) //si marca mas de 3.9V se configura a modo descarga con la batería de 1 ohm
   {
     digitalWrite(Relay, LOW);
   }
-  if (voltaje < 2.2000) //si marca 2.2V se configura el pin apagado para proteger la celda
+  if (voltaje < 2.2000) //si marca 2.2V se configura el pin con la batería de 5 ohm para proteger la celda
   {
     digitalWrite(Relay, HIGH);
   }
